@@ -1,0 +1,5 @@
+START RequestId: 91cb5ba7-c275-4766-a76a-43c62e112ee0 Version: $LATEST
+[ERROR] Runtime.ImportModuleError: Unable to import module 'dsl_hl7_kafka_order': No module named 'aws_lambda_powertools'Traceback (most recent call last):
+END RequestId: 91cb5ba7-c275-4766-a76a-43c62e112ee0
+REPORT RequestId: 91cb5ba7-c275-4766-a76a-43c62e112ee0	Init Duration: 0.16 ms	Duration: 97.36 ms	Billed Duration: 98 ms	Memory Size: 2048 MB	Max Memory Used: 2048 MB	
+{"errorMessage": "Unable to import module 'dsl_hl7_kafka_order': No module named 'aws_lambda_powertools'", "errorType": "Runtime.ImportModuleError", "stackTrace": []}

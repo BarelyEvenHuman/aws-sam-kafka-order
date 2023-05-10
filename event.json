@@ -1,0 +1,22 @@
+[
+    {
+        "payload": {
+            "topic": "NH-CARE-ENCOUNTER-COMPLETE",
+            "partition": 1,
+            "offset": 101,
+            "key": "cmNtMTAwMjA2OW5r",
+            "value": {},
+            "timestamp": 1648023053240
+        }
+    },
+    {
+        "payload": {
+            "topic": "NH-CARE-ENCOUNTER-COMPLETE",
+            "partition": 1,
+            "offset": 101,
+            "key": "QVVURkEwMDAwOTY=",
+            "value": {},
+            "timestamp": 1648023053240
+        }
+    }
+]

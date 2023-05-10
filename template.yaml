@@ -1,0 +1,52 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: 'AWS::Serverless-2016-10-31'
+Description: HL7 lambda 
+
+Resources:
+
+  dslHl7Messages:
+    Type: AWS::Serverless::Function
+    Properties:
+      Timeout: 900
+      MemorySize: 2048
+      Runtime: python3.7
+      Handler: dsl_hl7_kafka_order.lambda_handler
+      CodeUri:  .
+      FunctionName: hl7-kafka-order-sandbox-uw2
+      Description: Function to handle HL7 messages
+      Role: 'arn:aws:iam::913772092424:role/service-role/sebastianTest-role-d9cai42b'
+      Environment: 
+        Variables:
+          DESTINATION_BUCKET: nomi-sandbox-uw2-hl7-messages-doh
+          SHIELD_ENDPOINT: "https://api.shield.nomihealth-dev.net"
+          OAUTH_BASE_URL: "https://nomicare-de-dev-net.auth.us-west-2.amazoncognito.com/oauth2/token"
+          BASE_URL: "https://stable-api.nomicare-de-dev.com"
+          SECRET_MANAGER_HL7_ARN: arn:aws:secretsmanager:us-west-2:913772092424:secret:sandbox/hl7/api-auth-tokens/secret/sam-bsbBSY
+      VpcConfig:
+        SecurityGroupIds:
+          - sg-0593bb3cfbe6ceb50
+        SubnetIds:
+          - subnet-009606376840efe1b
+          - subnet-0b9d9f235200bbd50
+          - subnet-05e67151172f1fd15
+
+  DestinationBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: nomi-sandbox-uw2-hl7-messages-doh
+
+  nslApiSecret:
+    Type: 'AWS::SecretsManager::Secret'
+    Properties:
+      Name: sandbox/hl7/api-auth-tokens/secret/sam
+      SecretString: '{"tiger_api_key":"NDhhdjk0cGY0amxudjNmOHZhOWFiOWJoY3Y6bWs0bGZpbjZ0ZW0wanF1NWZub3M2MmFnZGxiZTdtbzdpdDNwMzM0dmlyaHNxaXBxbGRv"}'
+      Tags: 
+        - Key: "service"
+          Value: "care"
+        - Key: "owner"
+          Value: "dsl"
+
+
+  
+      
+      

@@ -1,0 +1,5 @@
+boto3==1.18.51
+us==2.0.2
+aws-lambda-powertools==1.25.3
+requests==2.27.1
+flatten-dict==0.4.2
